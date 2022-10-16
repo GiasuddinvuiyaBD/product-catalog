@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/x-icon" href="image/fave-icon.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Product-Catalog</title>
+</head>
+<body>
+	
+	<div class="container">
+		<div class="main-part">
+			<div class="text">
+				<h2>Product Catalogue</h2>
+			</div>
+			<div class="design-part-1">
+				<div class="search-input addingItem">
+						<input type="text" id="searchInput" name="searchInput" placeholder="Search Product..." autocomplete="off">
+					<div class="list-items">
+						<div class="list-group">
+						<!-- <div class="list-group-elements">
+							<p class="product">Banana-$ <span id="product-price"><strong>45</strong>
+								<i class="fa-solid updated-item fa-pencil"></i>
+								<i class="fa-solid delete-item fa-trash-can"></i>
+							</span></p>
+						</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+	        <div class="user-input-and-submit">
+	        	<form action="#">
+	        		<div class="inputBoxOne">
+	        			<input type="text" id="productName" name="name" placeholder="Enter Product Name" autocomplete="off">
+		        		<div>
+		        			<p id="error1"></p>
+		        		</div>
+	        		</div>
+	        		<div class="inputBoxTwo">
+		        		<input type="text" id="productPrice" name="price" placeholder="Enter Product Price" autocomplete="off">
+		        		<div>
+		        			<p id="error2"></p>
+		        		</div>
+	        		</div>
+	        		<input type="submit" value="Submit" id="submitBtn">
+	        	</form>
+	        </div>
+		</div>
+	</div>
+	<!-- starting version number 0.0 -->
+
+
+	<script src="js/script.js"></script>
+</body>
+</html>
