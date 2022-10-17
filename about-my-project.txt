@@ -1,0 +1,32 @@
+Assalmu alaikum
+	How are you all i seem to everyone is good.
+Today i am going to talk about my product catalog project.
+
+well let's start, At first i maked seperated 3 staps my all project 
+1.Step One is i will take the value of user and then i will set and database and UI.
+2.Step Number two is that, I have validated input field
+3.Step number three is that, I have removed date form UI and Databases
+
+This are three big part in my application.
+
+Now i am interested to talk about my this three steps
+1.Number one step is i have taken Data form user and set it on Database and show it in UI.
+
+At fisrt have selected all the element using document.querySelector. Then i have taken submitBtnElm and is addEventListener. After that i have maked smallest step for complete step number one. For example, i have taking a lot of function such as resivingValueFormInput(),validationInputBox(name,price),seperatedisErrorFun(isError,name,price) so this type of funciton i have taken for clean coding. Using this funciton for taking data form usesr and storing it in my database as well as showing it to UI. So this way i have completed my big step number 1.
+
+
+
+
+2. Step number two.
+In this step have solved validation part. Be to true talk about this step it was every intersting part for me in this project.Well let's talk about it. At fist i have taken a function and resive two parameter validationInputBox(name,price). Then i valided conditions and  setting error message as well as sound effect. So this way i have finished this steps.
+
+
+3. step three was very difficult and intersting to me. In this part i have completed DELETE step. At i have selected listItemsElm and set's addEventListener. Inside of it i have done event deligation after words i taken a function and resive a parameter getProductId(evt). This function have taken the unique id form database. On the other hand i have taken anther function call geetingParrent(evt) it's resive the parent element of the unique id and then i have deleted item form databese and ui.
+
+Here is my gitHub link : https://github.com/GiasuddinvuiyaBD/product-catalog.git
+
+
+
+
+
+

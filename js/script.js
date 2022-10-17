@@ -14,7 +14,7 @@
 	const listItemsElm = document.querySelector('.list-items');
 
 	// Data storage
-	let database = [];
+	let database = JSON.parse(localStorage.getItem('product-list')) || [];
 
 	// sound Effect
 	const twoEmptyErrorElm = new Audio("audio/two-empty-input.wav");
@@ -52,7 +52,10 @@
 			// getting parent element and then remove the element
 			let parrentElm = geetingParrent(evt)
 			// remove item form database
-			removeItemFromDataBase(uniqueId)
+			removeItemFromDataBase(uniqueId);
+
+			// remove Item Form localStorage
+			removeItemFormLocalStorage(uniqueId);
 			// remove element 
 			removeElm(parrentElm)
 		}
@@ -182,7 +185,8 @@
 			name,
 			price
 		});
-		// console.log(database);
+		// setting localStarage part 
+		localStorage.setItem('product-list',JSON.stringify(database));
 		// return the unique it 
 		return id;
 	}
@@ -196,5 +200,28 @@
 	/*
 			------------- submit button funciton End here  -------------------------
 	*/
+
+	// showing local storage item to ui 
+	database.forEach((data) => 
+	{
+		const htmlElm = `
+							<div class="list-group-elements item=${data.id}">
+								<p class="product">${data.name}-$ <span id="product-price"><strong>${data.price}</strong>
+									<i class="fa-solid updated-item fa-pencil"></i>
+									<i class="fa-solid delete-item fa-trash-can"></i>
+								</span></p>
+							</div>
+						`;
+		listGroupElm.insertAdjacentHTML('beforebegin',htmlElm);
+	});
+
+	// Getting id form database
+	// remove Item Form localStorage
+	function removeItemFormLocalStorage(id)
+	{ 
+		let localStorageProduct = JSON.parse(localStorage.getItem('product-list'));
+		let newProduct = localStorageProduct.filter((localStorageProducts) => localStorageProducts.id !== id);
+		localStorage.setItem('product-list',JSON.stringify(newProduct))
+	}
 })();
 
