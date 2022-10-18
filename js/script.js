@@ -8,6 +8,7 @@
 	// input box selecting
 	const productNameElm = document.querySelector('#productName');
 	const productPriceElm = document.querySelector('#productPrice');
+	const searchInputElm = document.querySelector('#searchInput');
 	let listGroupElm = document.querySelector('.list-group');
 	// showing error message 
 	let error1Elm = document.querySelector('#error1');
@@ -25,8 +26,9 @@
 	const deleteElm = new Audio("audio/delete.wav");
 	const numberErrorElm = new Audio("audio/numberError.wav");
 
+	
 
-
+	showData(database);
 
 	// submit button start here 
 	submitBtnIdElm.addEventListener('click',(evt) => 
@@ -84,10 +86,51 @@
 			submitBtnIdElm.setAttribute('data-id',getProduct.id);
 
 			// for updating data
-			gettingEditeBtnElm(submitBtnIdElm)
+			// gettingEditeBtnElm(submitBtnIdElm)
 
 		}
 	})
+
+	// -------------------------------------------------
+	// 			Filter method start here 
+	// -------------------------------------------------
+
+	searchInputElm.addEventListener('keyup',(evt) => 
+	{
+		let text = evt.target.value; 
+		const filtersProduct = myArr.filter((product) => 
+			{
+				let check = text.toLowerCase();
+				let value = product.name.toLowerCase();
+				
+				return value.includes(check);
+			});
+		
+		showData(filtersProduct)
+		
+	})
+
+	function getFilterItem(filtersProduct)
+	{
+		let html  
+		filtersProduct.forEach((item) => 
+		{
+				html += `
+							<div class="list-group-elements item=${item.id}">
+								<p class="product">${item.name}-$ <span id="product-price"><strong>${item.price}</strong>
+									<i class="fa-solid delete-item fa-trash-can"></i>
+									<i class="fa-solid updated-item fa-pencil"></i>
+								</span></p>
+							</div>
+							`;
+		});
+		listGroupElm.insertAdjacentHTML('beforebegin',html);
+		// console.log(filtersProduct)
+	}
+	// -------------------------------------------------
+	// 			Filter method start here 
+	// -------------------------------------------------
+
 	// updating product start here
 	function updateProducts(resive)
 	{
@@ -278,9 +321,13 @@
 			price
 		});
 		// setting localStarage part 
-		showItemToUI(id,name,price);
+
+		
+		
+
 		localStorage.setItem('product-list',JSON.stringify(database));
 		// return the unique it 
+		showData(myArr)
 		return id;
 	}
 	// resiving value form input box
@@ -294,18 +341,32 @@
 			------------- submit button funciton End here  -------------------------
 	*/
 	// showing local storage item to ui 
-	database.forEach((data) => 
+	
+
+	function showData(arr)
 	{
-		const htmlElm = `
-							<div class="list-group-elements item=${data.id}">
-								<p class="product">${data.name}-$ <span id="product-price"><strong>${data.price}</strong>
-									<i class="fa-solid delete-item fa-trash-can"></i>
-									<i class="fa-solid updated-item fa-pencil"></i>
-								</span></p>
-							</div>
-						`;
-		listGroupElm.insertAdjacentHTML('beforebegin',htmlElm);
-	});
+		
+		arr.forEach((data) => 
+		{
+			const htmlElm = `
+								<div class="list-group-elements item=${data.id}">
+									<p class="product">${data.name}-$ <span id="product-price"><strong>${data.price}</strong>
+										<i class="fa-solid delete-item fa-trash-can"></i>
+										<i class="fa-solid updated-item fa-pencil"></i>
+									</span></p>
+								</div>
+							`;
+			listGroupElm.insertAdjacentHTML('beforebegin',htmlElm);
+		});
+	}
+
+
+	function hideDate()
+	{
+		listGroupElm.innerHTML = '';
+		myArr.length = 0;
+	}
+
 
 	// Getting id form database
 	// remove Item Form localStorage
